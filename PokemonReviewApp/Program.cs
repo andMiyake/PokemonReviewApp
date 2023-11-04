@@ -12,6 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<Seed>();
 //AddTransient<T> -> add the object in the very beggining
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//Wiring up profile from AutoMapper
+
 //DI
 builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 
