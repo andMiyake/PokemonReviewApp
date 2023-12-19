@@ -1,4 +1,5 @@
 ﻿using PokemonReviewApp.Data;
+using PokemonReviewApp.Dto;
 using PokemonReviewApp.Interfaces;
 using PokemonReviewApp.Models;
 
@@ -85,6 +86,13 @@ namespace PokemonReviewApp.Repository
         {
             _context.Update(pokemon);
             return Save();
+        }
+
+        public Pokemon GetPokemonTrimToUpper(PokemonDto pokemonCreate)
+        {
+            return GetPokemons()
+                .Where(p => p.Name.Trim().ToUpper() == pokemonCreate.Name.Trim().ToUpper())
+                .FirstOrDefault();
         }
     }
 }
